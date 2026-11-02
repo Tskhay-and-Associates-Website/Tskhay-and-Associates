@@ -37,7 +37,7 @@ export const contactButton = { label: 'Contact Us', href: home('#contact') };
 export const hero = {
   title: 'Make your people strategy work.',
   body:
-    'We use rigorous analytics to connect your workforce to your day-to-day operations, giving you clear, practical, executable programs that drive profitability and performance.',
+    'We use rigorous analytics to connect your workforce to your day-to-day operations, giving you clear and practical programs that drive profitability and performance.',
   photo: {
     src: `${BASE}hero-data.svg`,
     alt: '',
@@ -125,11 +125,12 @@ export const about = {
   title: 'Workforce strategy and programs should never sit on a shelf.',
   paragraphs: [
     'I started Tskhay & Associates because I was tired of seeing brilliant HR leaders and business executives get stuck with ambiguous, theoretical strategies that fail in the real world. It is incredibly frustrating to spend immense time and money building these plans, only to watch them collect dust. You deserve practical, actionable solutions that actually make a difference for your workforce and your bottom line.',
-    'As a former management consultant at Deloitte and a VP of Organizational Effectiveness at Top Hat, I know what it takes to build programs that get boardroom buy-in and actually work day-to-day. Some of the programs I built improved retention from 56% to 87% in 18 months and moved eNPS from −17 to +20. I hold a Ph.D. in Quantitative Psychology from the University of Toronto and have spent over a decade advising organizations—from fast-growing start-ups to Fortune 500s—on how to use data to drive retention, engagement, and performance.',
+    'As a former management consultant at Deloitte and VP of Organizational Effectiveness at Top Hat, I know what it takes to build programs that earn boardroom buy-in and work day to day. Some of the programs I built improved retention from 56% to 87% in 18 months and moved eNPS from −17% to +20%. I hold a Ph.D. in Quantitative Psychology from the University of Toronto and have spent over a decade advising organizations—from fast-growing start-ups to Fortune 500 companies—on how to use data to drive retention, engagement, and performance.',
     'You don’t need another dashboard that no one looks at. You need a partner who brings the substance, specificity, and analytical rigor required to put your strategy into action.',
   ],
   signature: 'Konstantin Tskhay, Ph.D.',
   signatureRole: 'Managing Partner and Founder',
+  signatureCompany: 'Tskhay & Associates, Inc.',
   photo: {
     src: `${BASE}konstantin-tskhay.webp`,
     alt: 'Portrait of Konstantin Tskhay',
@@ -151,7 +152,7 @@ export const about = {
 export const clientWork = {
   title: 'Client work',
   intro:
-    'Konstantin has advised organizations from fast-growing start-ups to Fortune 500s, across financial services, consumer goods, manufacturing, energy and resources, public services, SaaS, education, and healthcare.',
+    'Konstantin has advised organizations from fast-growing start-ups to Fortune 500 companies across financial services, consumer goods, manufacturing, energy and resources, public services, SaaS, education, and healthcare.',
   stats: [
     { value: '35', label: 'Consulting projects delivered' },
     { value: '15+', label: 'Years of experience in strategic people analytics' },
@@ -164,30 +165,22 @@ export const clientWork = {
     {
       context: 'Top Hat, education technology',
       title: 'Building the foundations of the HR function',
-      body: 'As VP of Organizational Effectiveness, Konstantin built Top Hat’s HR function from the ground up as the company grew from start-up to scale-up. In 2022 his team was nominated for Best HR Team of the Year (under 500 employees) and Best Talent Management Strategy.',
-      highlights: [
-        'Talent strategy, performance management, and learning and development',
-        'Organizational design, including the reorganization of a 150-person sales team',
-        'Total rewards: compensation philosophy, an employee stock option plan, and a benefits provider change that cut costs by 20%',
-        'HR service delivery model, an HR help desk, and a new HR information system',
-        'HR due diligence and integration for three acquisitions',
-        'Retention up from 56% to 87% in 18 months, and eNPS up from −17 to +20',
-      ],
+      body: 'Built Top Hat’s HR function from the ground up as VP of Organizational Effectiveness, including talent strategy, organizational design, total rewards, and HR technology. Retention rose from 56% to 87% in 18 months.',
     },
     {
       context: 'Professional services firm',
       title: 'People analytics strategy and dashboard',
-      body: 'Designed the firm’s people analytics strategy, then built a people analytics dashboard to put it into practice, working alongside the client’s own team as a player-coach.',
+      body: 'Designed the firm’s people analytics strategy, then built a people analytics dashboard to put that strategy into practice, working alongside the client’s own team as a player-coach across both engagements.',
     },
     {
       context: 'Fortune 500 company',
       title: 'Leadership assessment and bench strength',
-      body: 'Led a cross-national team that delivered leadership assessment and development, then analyzed the results so the board could see the strength of its leadership bench.',
+      body: 'Led cross-national and cross-functional teams to deliver leadership assessment and development, then analyzed the results so the company’s functional board could understand the strength of its leadership bench.',
     },
     {
       context: 'Consumer and automotive companies',
       title: 'Workforce and location strategy',
-      body: 'Developed talent, location, and workplace strategies that helped optimize the number of plants and sales locations across Canada.',
+      body: 'Developed HR and operational strategy for consumer and automotive clients, including talent, location, and workplace strategies that optimized the number of plants and sales locations across Canada.',
     },
   ],
 };
@@ -226,11 +219,27 @@ export const contact = {
 };
 
 // CONTACT FORM SERVICE
-// GitHub Pages cannot receive form messages by itself, so the form sends them through
-// a free form service such as Formspree (formspree.io). Paste the form's address
-// between the quotes, for example: 'https://formspree.io/f/abcdwxyz'
-// While this is empty, sending the form opens the visitor's email app with the message filled in.
-export const formEndpoint = '';
+// GitHub Pages can't send email by itself, so the form uses a form service.
+// Fill in BOTH lines below for one of these options:
+//
+// Option A: FormSubmit (free). Sends each message to Konstantin AND an automatic copy to the
+//   visitor. Visitors tick a quick "I'm not a robot" check after pressing Send.
+//     export const formService = 'formsubmit';
+//     export const formEndpoint = 'https://formsubmit.co/konstantin@tskhayandassociates.com';
+//   The first message triggers a confirmation email to Konstantin; he clicks the link once.
+//
+// Option B: Formspree. Sends each message straight to Konstantin with no extra step.
+//   A copy to the visitor needs a paid Formspree plan.
+//     export const formService = 'formspree';
+//     export const formEndpoint = 'https://formspree.io/f/abcdwxyz';
+//
+// While these are empty, sending the form opens the visitor's email app with the message filled in.
+export const formService = 'formspree';
+export const formEndpoint = 'https://formspree.io/f/xzeegnyk';
+
+// The copy sent to the visitor (Option A only).
+export const visitorCopy =
+  'Thank you for contacting Tskhay & Associates. We have received your message and will reply soon to set up a time to talk.';
 
 // The contact form inside the Let's Talk section of the homepage.
 export const contactForm = {
