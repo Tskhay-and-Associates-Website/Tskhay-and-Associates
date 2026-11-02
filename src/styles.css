@@ -785,29 +785,9 @@ ol {
   list-style: none;
 }
 
-.example-highlights {
-  display: grid;
-  gap: 0.4rem;
-  margin-top: 0.85rem;
-  list-style: none;
-}
-
-.example-highlights li {
-  position: relative;
-  padding-left: 1.1rem;
-  color: var(--body);
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.example-highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.45rem;
-  height: 1px;
-  background: var(--ink);
+.example-list > li {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
 }
 
 .example-list .example-context {
@@ -824,6 +804,17 @@ ol {
 @media (min-width: 720px) {
   .example-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 0;
+  }
+
+  /* Each project shares three rows (label, title, description) with the project beside it,
+     so labels, titles and descriptions line up across the two columns. */
+  .example-list > li {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    align-content: start;
+    margin-bottom: 2.25rem;
   }
 }
 
@@ -835,6 +826,8 @@ ol {
 
   .examples-head {
     grid-column: 1 / span 3;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
   }
 
   .example-list {
