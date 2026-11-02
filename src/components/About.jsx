@@ -16,6 +16,7 @@ export default function About() {
           <figcaption className="signature">
             <span className="signature-name">{about.signature}</span>
             <span className="signature-role">{about.signatureRole}</span>
+            <span className="signature-role">{about.signatureCompany}</span>
           </figcaption>
         </figure>
 
