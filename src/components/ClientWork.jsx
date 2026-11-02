@@ -44,13 +44,6 @@ export default function ClientWork() {
                 {e.context && <p className="example-context">{e.context}</p>}
                 <h4>{e.title}</h4>
                 <p>{e.body}</p>
-                {e.highlights && (
-                  <ul className="example-highlights">
-                    {e.highlights.map((h) => (
-                      <li key={h}>{h}</li>
-                    ))}
-                  </ul>
-                )}
               </li>
             ))}
           </ul>
