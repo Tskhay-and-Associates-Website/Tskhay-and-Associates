@@ -1,19 +1,31 @@
-import { useState } from 'react';
-import { contactForm, formEndpoint, site } from '../content/site.js';
+import { useEffect, useState } from 'react';
+import { contactForm, formEndpoint, formService, site, visitorCopy } from '../content/site.js';
 
 // The contact form shown in the Let's Talk section.
-// With a form service address in src/content/site.js (formEndpoint), messages are sent
-// directly. Without one, sending opens the visitor's email app with the message filled in.
+// The form service is set in src/content/site.js (formService and formEndpoint):
+//   'formsubmit': sends the message to Konstantin and an automatic copy to the visitor.
+//   'formspree':  sends the message straight to Konstantin.
+//   none:         sending opens the visitor's email app with the message filled in.
 export default function ContactForm() {
   const f = contactForm.fields;
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error | handoff
+  const useFormSubmit = formService === 'formsubmit' && formEndpoint;
+  const useFormspree = formService === 'formspree' && formEndpoint;
+
+  // FormSubmit brings visitors back to the site with ?sent=1 after their message is sent.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') setStatus('sent');
+  }, []);
 
   async function handleSubmit(e) {
+    if (useFormSubmit) return; // a normal form post: FormSubmit takes it from here
+
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    if (!formEndpoint) {
+    if (!useFormspree) {
       const body = [
         `Name: ${data.get('name')}`,
         `Email: ${data.get('email')}`,
@@ -50,14 +62,40 @@ export default function ContactForm() {
     );
   }
 
+  const returnUrl =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}${import.meta.env.BASE_URL}?sent=1#contact`
+      : '';
+
   return (
-    <form className="form form-card" method="POST" action={formEndpoint || undefined} onSubmit={handleSubmit}>
-      <input type="hidden" name="_subject" value="New message from the T&A website" />
-      <p className="visually-hidden">
-        <label>
-          Leave this field empty <input name="_gotcha" tabIndex={-1} autoComplete="off" />
-        </label>
-      </p>
+    <form
+      className="form form-card"
+      method="POST"
+      action={useFormSubmit || useFormspree ? formEndpoint : undefined}
+      onSubmit={handleSubmit}
+    >
+      {useFormSubmit ? (
+        <>
+          <input type="hidden" name="_subject" value="New message from the T&A website" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_autoresponse" value={visitorCopy} />
+          <input type="hidden" name="_next" value={returnUrl} />
+          <p className="visually-hidden">
+            <label>
+              Leave this field empty <input name="_honey" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
+        </>
+      ) : (
+        <>
+          <input type="hidden" name="_subject" value="New message from the T&A website" />
+          <p className="visually-hidden">
+            <label>
+              Leave this field empty <input name="_gotcha" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
+        </>
+      )}
 
       <div className="field">
         <label htmlFor="cf-name">{f.name}</label>
@@ -83,7 +121,11 @@ export default function ContactForm() {
         {status === 'error' ? contactForm.error : ''}
       </p>
       <p className="muted form-note">
-        {status === 'handoff' ? contactForm.handoff : formEndpoint ? contactForm.privacy : contactForm.mailNote}
+        {status === 'handoff'
+          ? contactForm.handoff
+          : useFormSubmit || useFormspree
+            ? contactForm.privacy
+            : contactForm.mailNote}
       </p>
     </form>
   );
