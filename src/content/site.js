@@ -211,8 +211,8 @@ export const contact = {
   title: 'Let’s talk',
   body: 'Tell us about the workforce or people analytics challenge you’re working on, and we’ll reply to set up a time to talk.',
   photo: {
-    src: `${BASE}konstantin-lets-talk.webp`,
-    alt: 'Konstantin Tskhay speaking at a leadership event',
+    src: `${BASE}konstantin-presenting.webp`,
+    alt: 'Konstantin Tskhay presenting at a leadership event',
     width: 1200,
     height: 900,
   },
