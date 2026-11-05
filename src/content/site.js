@@ -26,6 +26,7 @@ export const nav = [
   { label: 'About Tskhay & Associates', href: home('#about') },
   { label: 'Client Work', href: home('#client-work') },
   { label: 'Our Approach', href: home('#approach') },
+  { label: 'eLTV Tool', href: `${BASE}eltv/` },
   // External links open in a new tab.
   { label: 'Learn People Analytics', href: courseUrl, external: true },
   ...(newsletterUrl ? [{ label: 'Newsletter', href: newsletterUrl, external: true }] : []),

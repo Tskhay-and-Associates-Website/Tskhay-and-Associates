@@ -16,6 +16,7 @@ The current site at tskhayandassociates.com is not affected until the domain is 
 | `public/` | Images, logo, browser-tab icon, sharing image, robots.txt and sitemap. |
 | `index.html` | The homepage. |
 | `lets-talk/index.html` | Forwards the old `/lets-talk` address to the contact form on the homepage. |
+| `eltv/index.html`, `src/eltv/` | The eLTV simulator page at `/eltv/`. Formulas are in `src/eltv/model.js`; its words are in `src/content/eltv.js`. |
 | `.github/workflows/deploy.yml` | Tells GitHub how to build and publish the site. |
 
 ## Publishing with GitHub Pages
@@ -55,13 +56,22 @@ The domain also carries Konstantin's email. Change only the website records belo
 
 1. In GitHub, go to **Settings** > **Pages** > **Custom domain**, enter `www.tskhayandassociates.com`, and select **Save**.
 2. In GoDaddy DNS, replace the existing **A** record for `@` with four A records pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. These are GitHub's published addresses; check GitHub's "Managing a custom domain" page in case they have changed.
-3. Set the **CNAME** record for `www` to `tskhay-and-associates-inc.github.io` (the organization that owns this repository).
+3. Set the **CNAME** record for `www` to `tskhay-and-associates-website.github.io` (the organization that owns this repository).
 4. When GitHub shows the DNS check as successful, tick **Enforce HTTPS** under **Settings** > **Pages**.
 5. Open **Actions**, select the workflow, and select **Run workflow**, so the site rebuilds for the new address.
 6. Check https://tskhayandassociates.com and https://www.tskhayandassociates.com, and send a test email to confirm email still arrives.
 
+## The eLTV simulator
+
+The page at `/eltv/` is the Executive eLTV & Workforce Risk Simulator, restyled to match the site.
+
+- `src/eltv/model.js`: the Tskhay-Charney formula, scenario presets and chart maths, copied unchanged from the original calculator. Edit only when the model itself changes.
+- `src/eltv/EltvApp.jsx` and `src/eltv/eltv.css`: layout and look.
+- `src/content/eltv.js`: page text, including the FiveX collaboration note.
+- Everything runs in the visitor's browser. Nothing they enter is stored or sent.
+
 ## Technical notes
 
-- React 18 and Vite 5. The workflow runs `npm ci` and `npm run build` and publishes the `dist` folder.
+- React 18 and Vite 5. The eLTV page also uses Recharts (chart) and lucide-react (icons). The workflow runs `npm ci` and `npm run build` and publishes the `dist` folder.
 - The Jost font is bundled with the site, so no external font service is called.
 - No tracking, analytics or cookies. If Formspree is switched on, the form sends the visitor's name, email, company and message to it.

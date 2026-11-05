@@ -1,0 +1,534 @@
+/* eLTV simulator page. Uses the site's variables from src/styles.css.
+   Red is reserved for step numbers, negative value and key chart numbers. */
+
+.eltv-page {
+  --red: #ed2434;
+  --red-soft: #fdecee;
+  --ink-soft: #f5f5f5;
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+  font-size: 1rem;
+}
+
+.eltv-intro {
+  max-width: 52rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.eltv-intro h1 {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  line-height: 1.1;
+}
+
+.eltv-intro .lead {
+  margin-top: 1rem;
+}
+
+.formula {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--alt);
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.formula-name {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.collab {
+  margin-top: 0.75rem;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Layout ---------- */
+
+.eltv-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1000px) {
+  .eltv-grid {
+    grid-template-columns: minmax(340px, 400px) 1fr;
+    gap: 2rem;
+  }
+}
+
+.eltv-panel {
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.eltv-results {
+  display: grid;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+/* ---------- Step labels ---------- */
+
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.step-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.step-label h2 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+/* ---------- Inputs ---------- */
+
+.input-card {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #ececec;
+  border-radius: var(--radius);
+}
+
+.input-card + .input-card {
+  margin-top: 0.6rem;
+}
+
+.input-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.input-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  align-items: end;
+}
+
+.input-sub,
+.slider-head label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.slider-head label {
+  color: var(--ink);
+}
+
+.slider-head span {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.num-field {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--alt);
+}
+
+.num-field:focus-within {
+  border-color: var(--ink);
+}
+
+.num-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.num-affix {
+  color: #8b8b8b;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.num-affix:first-child {
+  margin-right: 0.2rem;
+}
+
+.num-affix:last-child {
+  margin-left: 0.25rem;
+}
+
+.slider {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+/* ---------- Results ---------- */
+
+.result-cards {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 560px) {
+  .result-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.result-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.result-card-scenario {
+  border-color: var(--ink);
+}
+
+.result-card-scenario.is-negative {
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+
+.result-title {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.result-value {
+  margin: 0.15rem 0 0.5rem;
+  color: var(--ink);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.muted-value {
+  color: var(--muted);
+}
+
+.result-card-scenario.is-negative .result-title,
+.result-card-scenario.is-negative .result-value {
+  color: var(--red);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #ececec;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-row:last-child {
+  border-bottom: 0;
+}
+
+.stat-row-label {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.delta-bar {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.delta-bar.is-negative {
+  color: var(--red);
+}
+
+@media (min-width: 560px) {
+  .delta-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .delta-item + .delta-item {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--rule);
+  }
+}
+
+.delta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.delta-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.delta-value {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.delta-pct {
+  font-size: 0.85rem;
+}
+
+.insight {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.insight svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.insight-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.insight p {
+  color: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ---------- Chart ---------- */
+
+.chart-card {
+  padding: 0.9rem 1rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.chart-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.chart-head h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+}
+
+.chart-note {
+  color: #8b8b8b;
+  font-size: 0.8rem;
+}
+
+.chart-box {
+  height: clamp(220px, 32vw, 280px);
+}
+
+/* ---------- Presets ---------- */
+
+.preset-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.preset {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  min-height: 56px;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.preset:hover {
+  border-color: var(--ink);
+}
+
+.preset.is-active {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+  background: var(--alt);
+}
+
+.preset-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius);
+  background: var(--ink-soft);
+  color: var(--ink);
+}
+
+.preset-icon.is-negative {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.preset-text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.preset-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.preset-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.preset-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* ---------- Info tips ---------- */
+
+.tip {
+  position: relative;
+  display: inline-flex;
+  margin-left: 0.3rem;
+}
+
+.tip-trigger {
+  display: inline-flex;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: help;
+}
+
+.tip-body {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: -8px;
+  z-index: 20;
+  width: min(240px, 70vw);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  display: none;
+  pointer-events: none;
+}
+
+.tip-wide .tip-body {
+  width: min(280px, 75vw);
+}
+
+.tip:hover .tip-body,
+.tip-trigger:focus-visible + .tip-body {
+  display: block;
+}
+
+/* ---------- Footer note and call to action ---------- */
+
+.eltv-disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.eltv-cta-inner {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.eltv-cta .lead {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .eltv-cta-inner {
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+  }
+}

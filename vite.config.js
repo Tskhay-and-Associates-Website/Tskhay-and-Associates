@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         main: page('./index.html'),
         letsTalk: page('./lets-talk/index.html'),
+        eltv: page('./eltv/index.html'),
       },
     },
   },
