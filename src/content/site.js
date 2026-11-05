@@ -26,10 +26,15 @@ export const nav = [
   { label: 'About Tskhay & Associates', href: home('#about') },
   { label: 'Client Work', href: home('#client-work') },
   { label: 'Our Approach', href: home('#approach') },
-  { label: 'eLTV Tool', href: `${BASE}eltv/` },
-  // External links open in a new tab.
-  { label: 'Learn People Analytics', href: courseUrl, external: true },
-  ...(newsletterUrl ? [{ label: 'Newsletter', href: newsletterUrl, external: true }] : []),
+  // "Resources" opens a small menu. External links open in a new tab.
+  {
+    label: 'Resources',
+    children: [
+      { label: 'eLTV Simulator', href: `${BASE}eltv/` },
+      { label: 'Learn People Analytics', href: courseUrl, external: true },
+      ...(newsletterUrl ? [{ label: 'Newsletter', href: newsletterUrl, external: true }] : []),
+    ],
+  },
 ];
 
 // Every "Contact Us" button scrolls to the contact form in the Let's Talk section.
@@ -236,7 +241,7 @@ export const contact = {
 //
 // While these are empty, sending the form opens the visitor's email app with the message filled in.
 export const formService = 'formspree';
-export const formEndpoint = 'https://formspree.io/f/xzeegnyk';
+export const formEndpoint = 'https://formspree.io/f/moeebyzo';
 
 // The copy sent to the visitor (Option A only).
 export const visitorCopy =

@@ -4,6 +4,7 @@ import Stakes from './components/Stakes.jsx';
 import Value from './components/Value.jsx';
 import Clients from './components/Clients.jsx';
 import Services from './components/Services.jsx';
+import EltvCallout from './components/EltvCallout.jsx';
 import About from './components/About.jsx';
 import ClientWork from './components/ClientWork.jsx';
 import Approach from './components/Approach.jsx';
@@ -23,6 +24,7 @@ export default function App() {
         <Value />
         <Clients />
         <Services />
+        <EltvCallout />
         <About />
         <ClientWork />
         <Approach />

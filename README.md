@@ -36,7 +36,7 @@ Every "Contact Us" button scrolls to the form in the Let's Talk section. GitHub 
 
 ## Course and newsletter links
 
-Both are set near the top of `src/content/site.js`:
+Both are set near the top of `src/content/site.js` and appear under the **Resources** menu, with the eLTV Simulator:
 
 - `courseUrl`: the People Analytics course page.
 - `newsletterUrl`: the Kit newsletter signup page. While it is empty, the Newsletter link stays hidden. Paste the Kit link between the quotes and commit to show it.

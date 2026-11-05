@@ -4,7 +4,8 @@ import { nav, site, contactButton } from '../content/site.js';
 // links (which open other websites) appear in the top menu, not here.
 export default function Footer() {
   const year = new Date().getFullYear();
-  const links = nav.filter((item) => !item.external);
+  // Internal pages only, with grouped items (e.g. Resources) flattened.
+  const links = nav.flatMap((item) => item.children || [item]).filter((item) => !item.external);
   return (
     <footer className="site-footer">
       <div className="container footer-inner">

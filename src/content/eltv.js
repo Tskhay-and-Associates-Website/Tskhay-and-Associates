@@ -14,3 +14,11 @@ export const eltvPage = {
   ctaTitle: 'Want this run on your own workforce data?',
   ctaBody: 'We can calibrate the model to your organization and show where the value is leaking.',
 };
+
+// Homepage callout that points to the simulator (shown after Services).
+export const eltvCallout = {
+  label: 'Free tool',
+  title: 'What is one employee worth to your business?',
+  body: 'Use the eLTV Simulator to estimate the net value of an employee over their tenure, then test how retention, engagement and ramp-up time move it.',
+  cta: 'Try the eLTV Simulator',
+};
