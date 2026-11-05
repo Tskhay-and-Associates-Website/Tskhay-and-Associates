@@ -409,7 +409,7 @@ ol {
   background: transparent;
   color: var(--ink);
   font-family: inherit;
-  font-size: inherit;
+  line-height: 1.65;
   cursor: pointer;
 }
 
