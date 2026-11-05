@@ -10,7 +10,7 @@ export const eltvPage = {
   // Shown under the formula. Set to '' to hide.
   collaboration: 'Developed in collaboration with FiveX.',
   disclaimer:
-    'Results are illustrative estimates from the inputs you enter. Nothing you type is stored or sent anywhere.',
+    'Results are illustrative estimates from the inputs you enter. The numbers you type stay in your browser and are not stored or sent anywhere.',
   ctaTitle: 'Want this run on your own workforce data?',
   ctaBody: 'We can calibrate the model to your organization and show where the value is leaking.',
 };

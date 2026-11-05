@@ -68,10 +68,10 @@ The page at `/eltv/` is the Executive eLTV & Workforce Risk Simulator, restyled 
 - `src/eltv/model.js`: the Tskhay-Charney formula, scenario presets and chart maths, copied unchanged from the original calculator. Edit only when the model itself changes.
 - `src/eltv/EltvApp.jsx` and `src/eltv/eltv.css`: layout and look.
 - `src/content/eltv.js`: page text, including the FiveX collaboration note.
-- Everything runs in the visitor's browser. Nothing they enter is stored or sent.
+- Everything runs in the visitor's browser. The numbers they enter are not stored or sent (Google Analytics, if accepted, records page visits only).
 
 ## Technical notes
 
 - React 18 and Vite 5. The eLTV page also uses Recharts (chart) and lucide-react (icons). The workflow runs `npm ci` and `npm run build` and publishes the `dist` folder.
 - The Jost font is bundled with the site, so no external font service is called.
-- No tracking, analytics or cookies. If Formspree is switched on, the form sends the visitor's name, email, company and message to it.
+- Google Analytics 4 (`G-ZB7D6NZ9JJ`, set in `src/analytics.js`) loads only after a visitor clicks Accept on the cookie banner. "Cookie settings" in the footer reopens the banner. The form sends the visitor's name, email, company and message to Formspree.

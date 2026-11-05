@@ -1,4 +1,5 @@
 import { nav, site, contactButton } from '../content/site.js';
+import { openConsentSettings } from '../analytics.js';
 
 // The footer lists the sections of this website only. The course and newsletter
 // links (which open other websites) appear in the top menu, not here.
@@ -31,6 +32,9 @@ export default function Footer() {
         </nav>
         <p className="copyright">
           © {year} {site.legalName}
+          <button type="button" className="footer-cookie-link" onClick={openConsentSettings}>
+            Cookie settings
+          </button>
         </p>
       </div>
     </footer>
