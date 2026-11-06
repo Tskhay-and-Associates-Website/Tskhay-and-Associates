@@ -32,6 +32,9 @@ export default function Footer() {
         </nav>
         <p className="copyright">
           © {year} {site.legalName}
+          <a className="footer-cookie-link" href={`${import.meta.env.BASE_URL}privacy/`}>
+            Privacy Policy
+          </a>
           <button type="button" className="footer-cookie-link" onClick={openConsentSettings}>
             Cookie settings
           </button>

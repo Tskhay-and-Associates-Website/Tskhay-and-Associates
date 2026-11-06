@@ -1323,7 +1323,8 @@ ol {
 
 /* ---------- Cookie consent ---------- */
 
-.footer-cookie-link {
+.site-footer .footer-cookie-link {
+  display: inline;
   margin-left: 1.25rem;
   padding: 0;
   border: 0;
@@ -1359,4 +1360,47 @@ ol {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+}
+
+.consent-banner a {
+  color: var(--ink);
+}
+
+/* ---------- Privacy policy ---------- */
+
+.legal-page {
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.legal-inner {
+  max-width: 46rem;
+}
+
+.legal-page h1 {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .lead {
+  margin-top: 1.25rem;
+}
+
+.legal-page section {
+  margin-top: 2rem;
+}
+
+.legal-page h2 {
+  font-size: 1.375rem;
+  margin-bottom: 0.6rem;
+}
+
+.legal-page section p + p,
+.legal-page ul + p {
+  margin-top: 0.75rem;
+}
+
+.legal-page ul {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
 }
