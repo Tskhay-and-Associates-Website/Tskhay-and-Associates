@@ -1338,22 +1338,53 @@ ol {
 
 .consent-banner {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 100;
-  display: grid;
-  gap: 0.9rem;
-  max-width: 34rem;
-  margin-left: auto;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1.5rem;
+  padding: 0.75rem var(--gutter);
+  border-top: 1px solid #3a3a3a;
+  background: var(--dark);
+  color: var(--on-dark);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.consent-banner p {
+  max-width: 48rem;
+}
+
+.consent-banner .button-small {
+  min-height: 36px;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+.consent-banner .button:not(.button-outline) {
+  border-color: var(--white);
   background: var(--white);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  color: var(--body);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--ink);
+}
+
+.consent-banner .button:not(.button-outline):hover {
+  border-color: #e6e6e6;
+  background: #e6e6e6;
+}
+
+.consent-banner .button-outline {
+  border-color: #6b6b6b;
+  color: var(--on-dark);
+}
+
+.consent-banner .button-outline:hover {
+  border-color: var(--white);
+  background: transparent;
+  color: var(--white);
 }
 
 .consent-actions {
@@ -1363,7 +1394,8 @@ ol {
 }
 
 .consent-banner a {
-  color: var(--ink);
+  color: var(--white);
+  text-underline-offset: 3px;
 }
 
 /* ---------- Privacy policy ---------- */
