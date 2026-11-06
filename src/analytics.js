@@ -50,7 +50,7 @@ function showBanner() {
   el.setAttribute('role', 'region');
   el.setAttribute('aria-label', 'Cookie consent');
   el.innerHTML = `
-    <p>We use Google Analytics cookies to understand how visitors use this site. Nothing is collected unless you accept. <a href="${import.meta.env.BASE_URL}privacy/">Privacy Policy</a></p>
+    <p>This website uses cookies to understand how visitors use it. <a href="${import.meta.env.BASE_URL}privacy/">Privacy Policy</a></p>
     <div class="consent-actions">
       <button type="button" class="button button-small" data-consent="granted">Accept</button>
       <button type="button" class="button button-outline button-small" data-consent="denied">Decline</button>
