@@ -13,6 +13,9 @@ export const eltvPage = {
     'Results are illustrative estimates from the inputs you enter. The numbers you type stay in your browser and are not stored or sent anywhere.',
   ctaTitle: 'Want this run on your own workforce data?',
   ctaBody: 'We can calibrate the model to your organization and show where the value is leaking.',
+  // Button under the call to action. Goes to the Client Work section of the homepage.
+  ctaLabel: 'See our client work',
+  ctaHref: '#client-work',
 };
 
 // Homepage callout that points to the simulator (shown after Services).
