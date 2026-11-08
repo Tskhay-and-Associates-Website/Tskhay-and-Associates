@@ -15,7 +15,7 @@ import {
 import { Mountain, HeartPulse, Cpu, TrendingDown, Zap, TrendingUp, Minus, Lightbulb, Check, Info } from 'lucide-react';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
-import { home, contactButton } from '../content/site.js';
+import { home } from '../content/site.js';
 import { eltvPage } from '../content/eltv.js';
 import {
   TOOLTIPS,
@@ -450,8 +450,8 @@ export default function EltvApp() {
               <h2 id="eltv-cta-title">{eltvPage.ctaTitle}</h2>
               <p className="lead">{eltvPage.ctaBody}</p>
             </div>
-            <a className="button" href={home('#contact')}>
-              {contactButton.label}
+            <a className="button" href={home(eltvPage.ctaHref)}>
+              {eltvPage.ctaLabel}
             </a>
           </div>
         </section>
