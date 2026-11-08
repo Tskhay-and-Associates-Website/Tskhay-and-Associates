@@ -11,7 +11,7 @@ export const privacy = {
     {
       heading: 'Who is responsible',
       body: [
-        'Tskhay & Associates, Inc. operates this website. Konstantin Tskhay is the person responsible for the protection of personal information. You can reach him at konstantin@tskhayandassociates.com.',
+        'Tskhay & Associates, Inc. operates this website and is responsible for the personal information collected through it. For any privacy question or request, email konstantin@tskhayandassociates.com.',
       ],
     },
     {
@@ -33,7 +33,7 @@ export const privacy = {
     {
       heading: 'Service providers',
       body: [
-        'We use Formspree to deliver contact form messages to our inbox and Google Analytics for website statistics. Both are based in the United States, so information they process may be stored outside Canada and be subject to the laws of that country.',
+        'We use Formspree to deliver contact form messages to our inbox and Google Analytics for website statistics. Information they process is stored in the United States.',
       ],
     },
     {
